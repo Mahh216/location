@@ -29,9 +29,36 @@
       	<input type="text" name="time" id="time" value=""  />
     </div>
   </div>
-
 </div>
 
+<h2> Map</h2>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+        <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 52.298099, lng: -1.946858},
+          zoom: 8
+        });
+      }
+        map.setMapTypeId(‘terrain’);
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQvpXFTSWlj2WRUnheYSrJgSYW80h2pV8
+
+content_copy
+&callback=initMap"
+    async defer></script>
 
 
 </body>

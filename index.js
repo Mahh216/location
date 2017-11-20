@@ -1,4 +1,11 @@
-//when the jQuery Mobile page is initialised
+
+
+var locationOptions = { 
+	maximumAge: 10000, 
+	timeout: 6000, 
+	enableHighAccuracy: true 
+};
+
 $(document).on('pageinit', function() {
 	alert("scooby dooby doo where are you?");
 	//set up listener for button click
@@ -17,7 +24,9 @@ function getPosition() {
 	$('#time').val("Getting data...");
 	
 	//instruct location service to get position with appropriate callbacks
-	navigator.geolocation.getCurrentPosition(successPosition, failPosition);
+	var watchID = navigator.geolocation.watchPosition(
+				successPosition, failPosition, locationOptions);
+
 }
 
 
@@ -29,12 +38,13 @@ function successPosition(position) {
 	
 
 	//lets get some stuff out of the position object
-	var time = position.timestamp;
+	
+    var unixtime = new Date(position.timestamp);
 	var latitude = position.coords.latitude;
     var longitude =position.coords.longitude;
 	
 	//OK. Now we want to update the display with the correct values
-	$('#time').val("Recieved data at " + time);
+	$('#time').val("Recieved data at " + unixtime);
 	$('#lattext').val(latitude);
 	$('#longtext').val(longitude);
 }
