@@ -1,6 +1,6 @@
 //when the jQuery Mobile page is initialised
 $(document).on('pageinit', function() {
-	alert("runn");
+	alert("scooby dooby doo where are you?");
 	//set up listener for button click
 	$(document).on('click', getPosition);
 	
